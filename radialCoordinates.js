@@ -69,7 +69,10 @@ for (var i=0; i<daysToShow; i++) {
             a = 3;
             b = 15;
             return Math.floor((Math.random() * b) + a);
-        });  // radius
+        })
+        .style("fill", function(d) { 
+            return colors[c]; 
+        });
 
     }
 }
