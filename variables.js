@@ -1,3 +1,24 @@
+
+var daysPerMonth = 30;
+var angle = 360 / daysPerMonth;
+var currAngle = 0;
+var categories = 8;
+var radius = 40;
+var innerRadius = 50;
+var currRadius = innerRadius;
+
+var totalItems = daysPerMonth*categories;
+
+var daysToShow = 15;
+
+var currentDate = new Date();
+var currentMonth = currentDate.getMonth() + 1;
+var currentYear = currentDate.getFullYear();
+var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+var daysToShow = currentDate.getDate();
+
+
 /* 
 Meat #f0a4a6
 Fisk: b1d0cf
