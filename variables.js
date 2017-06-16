@@ -1,16 +1,5 @@
-
+// Date variables
 var daysPerMonth = 30;
-var angle = 360 / daysPerMonth;
-var currAngle = 0;
-var categories = 8;
-var innerRadius = 50;
-var currRadius = innerRadius;
-var radius = 40;
-var minBubbleRadius = 0;
-var maxBubbleRadius = 20;
-
-var totalItems = daysPerMonth*categories;
-
 var daysToShow = 15;
 
 var currentDate = new Date();
@@ -19,6 +8,20 @@ var currentYear = currentDate.getFullYear();
 var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate();
 
 var daysToShow = currentDate.getDate();
+
+// Circle variables
+var angle = 360 / daysPerMonth;
+var currAngle = 0;
+var innerRadius = 50;
+var currRadius = innerRadius;
+var radius = 40;
+var categories = 8;
+// Bubbles
+var minBubbleRadius = 0;
+var maxBubbleRadius = 20;
+
+var totalItems = daysPerMonth*categories;
+
 
 
 /* 
