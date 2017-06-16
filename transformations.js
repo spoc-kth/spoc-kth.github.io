@@ -4,22 +4,21 @@ var swipeCard = function() {
 	
 	d3.selectAll("circle.bubble")
 		.transition()
-		.style("opacity", minOpacity);
+			.style("opacity", function(d) {
+				if(data[d.radialX][d.radialY] > 0) {
+					return maxOpacity;
+				} else {
+					return minOpacity;
+				}
+			})
+			.attr("r", function(d) {
+				if(data[d.radialX][d.radialY] > 0) {
+			       return ((data[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+			    } else {
+			    	return ((randomData[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+			    }
+			    })
 
-	for (var i=0; i<daysToShow; i++) {
-		for (var c=0; c<categories; c++) {
-			
-			if(data[i][c] > 0) {
-				d3.select("#bubble_id_" + String(i) + "_" + String(c))
-					.transition()
-					.style("opacity", maxOpacity)
-					.attr("r", function(d) {
-			            return ((data[i][c])*maxBubbleRadius) + minBubbleRadius;
-			        })
-			}
-		
-		}
-	}
 
 }
 

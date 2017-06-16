@@ -17,8 +17,26 @@ var generateRandomData = function() {
 
 }
 
-var generateRandomUserData = function() {
+var generateRandomDataOneArray = function() {
+	var dataArray = [];
+	var j = 0;
+	for (var i=0; i<daysPerMonth; i++) {
+		//dataArray[i] = [];
 
+		for (var c=0; c<categories; c++) {
+
+			// Random number between 0 and 1
+			dataArray[j] = getRandomArbitrary(0,1);
+			j += 1;
+
+		}
+
+	}
+	return dataArray;
+
+}
+
+var generateRandomUserData = function() {
 	var dataArray = [];
 	for (var i=0; i<daysPerMonth; i++) {
 		dataArray[i] = [];
@@ -45,26 +63,73 @@ var generateRandomUserData = function() {
 	return dataArray;
 }
 
+var generateRandomUserDataOneArray = function() {
+	var dataArray = [];
+	var j = 0;
+
+	for (var i=0; i<daysPerMonth; i++) {
+		shoppedToday = getRandomInt(0,2);
+
+		for (var c=0; c<categories; c++) {
+	
+			if (shoppedToday) {
+				shoppedThisCategory = getRandomInt(0,2);
+				if (shoppedThisCategory) {
+					dataArray[j] = getRandomArbitrary(0,1);
+				} else {
+					dataArray[j] = 0;
+				}
+			} else {
+				dataArray[j] = 0;
+			}
+			j += 1;
+		}
+
+	}
+
+	return dataArray;
+}
+
+//	Takes an array of bubbleData and a new array. Will add the new data to
+//	bubble array under bubbleData[i].values dictionary
+var updateBubbleData = function(bubbleData, newData, newDataKey) {
+	console.log("oo");
+	var j = 0;
+	for (var i=0; i<daysPerMonth; i++) {
+		for (var c=0; c<categories; c++) {
+			
+			bubbleData[j].values[newDataKey] = newData[j];
+
+			j += 1;
+		}
+	}
+	return bubbleData;
+}
+
 var generateBubbleData = function() {
 	var j = 0;
 	var dataArray = [];
 	for (var i=0; i<daysPerMonth; i++) {
-		//dataArray[i] = [];
-
 		for (var c=0; c<categories; c++) {
 
-			var bubbleData = {
+			var bubbleObj = {
 				'posX': origin.x + coordSys[i][c].x,
 				'posY': origin.y + coordSys[i][c].y,
 				'radialX': i,
 				'radialY': c,
-			}
-			dataArray[j] = bubbleData;
+				'category': c,
+				'values': {},
+			};
+			dataArray[j] = bubbleObj;
 			j += 1;
 
 		}
 
 	}
+	var newData = generateRandomDataOneArray();
+	var usrData = generateRandomUserDataOneArray();
+	dataArray = updateBubbleData(dataArray, newData, 'initial');
+	dataArray = updateBubbleData(dataArray, usrData, 'user1');
 	return dataArray;
 
 }
@@ -72,4 +137,5 @@ var generateBubbleData = function() {
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
 var bubbleData = generateBubbleData();
+console.log(bubbleData);
 
