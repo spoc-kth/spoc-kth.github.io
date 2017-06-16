@@ -45,7 +45,31 @@ var generateRandomUserData = function() {
 	return dataArray;
 }
 
+var generateBubbleData = function() {
+	var j = 0;
+	var dataArray = [];
+	for (var i=0; i<daysPerMonth; i++) {
+		//dataArray[i] = [];
+
+		for (var c=0; c<categories; c++) {
+
+			var bubbleData = {
+				'posX': origin.x + coordSys[i][c].x,
+				'posY': origin.y + coordSys[i][c].y,
+				'radialX': i,
+				'radialY': c,
+			}
+			dataArray[j] = bubbleData;
+			j += 1;
+
+		}
+
+	}
+	return dataArray;
+
+}
+
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
-
+var bubbleData = generateBubbleData();
 

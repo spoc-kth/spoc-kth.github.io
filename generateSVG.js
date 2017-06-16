@@ -1,11 +1,5 @@
 // **************************************************
-// Setup settings for graphic
-var canvas_width = 800;
-var canvas_height = 800;
-var origin = {
-    'x': canvas_width/2,
-    'y': canvas_height/2
-}
+
 
 // Create SVG element
 var svg = d3.select("h3")  // This is where we put our vis
@@ -19,28 +13,64 @@ var data = randomData;
 for (var i=0; i<daysToShow; i++) {
     for (var c=0; c<categories; c++) {
 
-    svg.append("circle")  // Add circle svg
-        .attr("class", "bubble")
-        .attr("id", function(d) {
-            return "bubble_id_" + String(i) + "_" + String(c);
-        })
-        .attr("cx", function(d) {
-            return origin.x + coordSys[i][c].x;  // Circle's X
-        })
-        .attr("cy", function(d) {  // Circle's Y
-            return origin.y + coordSys[i][c].y;
-        })
-        .attr("r", function(d) {
-            // Return a random number between a and b:
-            a = minBubbleRadius;
-            b = maxBubbleRadius;
-            return ((data[i][c])*maxBubbleRadius) + minBubbleRadius;
-        })
-        .style("fill", function(d) { 
-            return colors[c]; 
-        });
+        bubbleCoord = {
+                'x': i,
+                'y': c
+            };
+            pdata = [10,12,6,8,15];
 
-    }
+        svg.selectAll("circle")  // Add circle svg
+            .data(bubbleData)
+            .enter()
+                .append('circle')
+                .attr("class", function(d){
+                    if (d.radialX < daysToShow) {
+                        return "bubble bubble-visible"
+                    } else {
+                        return "bubble bubble-hidden"
+                    }
+                })
+                .attr("id", function(d) {
+                    return "bubble_id_" + String(d.radialX) + "_" + String(d.radialY);
+                })
+                .attr("cx", function(d) {
+                    return d.posX;  // Circle's X
+                })
+                .attr("cy", function(d) {  // Circle's Y
+                    return d.posY;
+                })
+                .attr("r", function(d) {
+                    return ((data[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+                })
+                .style("fill", function(d) { 
+                    return colors[d.radialY]; 
+                })
+                .transition()
+                    .duration(0)
+                    .on("start", function repeat() {
+                        d3.active(this)
+                            .transition()
+                                .duration(1300)
+                                .attr("cx", function(d) {
+                                     return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
+                                 })
+                                .attr("cy", function(d) {  // Circle's Y
+                                    return d.posY + ((getRandomArbitrary(0,1)*moveY)-(moveY/2));
+                                })
+                            .transition()
+                                .duration(1300)
+                                .attr("cx", function(d) {
+                                     return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
+                                 })
+                                .attr("cy", function(d) {  // Circle's Y
+                                    return d.posY + ((getRandomArbitrary(0,1)*moveY)-(moveY/2));
+                                })
+                            .transition()
+                                .duration(0)
+                                .on("start", repeat);
+                        });
+
+        }
 }
 
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;

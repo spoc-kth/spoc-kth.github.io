@@ -47,12 +47,21 @@ var colr7 = colrBread;
 var colr8 = colrFreezer;
 
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
-/*
-Bubble opacity
-*/
+// Bubble opacity
 var minOpacity = 0.2;
 var normalOpacity = 0.8;
 var maxOpacity = 0.99;
+
+// Setup settings for graphic
+var canvas_width = 800;
+var canvas_height = 800;
+var origin = {
+    'x': canvas_width/2,
+    'y': canvas_height/2
+}
+// Bubble animation
+var moveX = 5;
+var moveY = 5;
 
 function getRandomInt(min, max) {
 	min = Math.ceil(min);

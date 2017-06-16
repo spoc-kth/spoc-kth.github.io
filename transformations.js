@@ -29,21 +29,38 @@ var resetBubbles = function() {
 
 	d3.selectAll("circle.bubble")
 		.transition()
-		.style("opacity", normalOpacity);
+		.style("opacity", normalOpacity)
+		.attr("r", function(d) {
+                    return ((data[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+                })
+		.transition()
+                    .duration(0)
+                    .on("start", function repeat() {
+                        d3.active(this)
+                            .transition()
+                                .duration(1300)
+                                .attr("cx", function(d) {
+                                     return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
+                                 })
+                                .attr("cy", function(d) {  // Circle's Y
+                                    return d.posY + ((getRandomArbitrary(0,1)*moveY)-(moveY/2));
+                                })
+                            .transition()
+                                .duration(1300)
+                                .attr("cx", function(d) {
+                                     return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
+                                 })
+                                .attr("cy", function(d) {  // Circle's Y
+                                    return d.posY + ((getRandomArbitrary(0,1)*moveY)-(moveY/2));
+                                })
+                            .transition()
+                                .duration(0)
+                                .on("start", repeat);
+                        });
 
-	for (var i=0; i<daysToShow; i++) {
-		for (var c=0; c<categories; c++) {
-			
-			d3.select("#bubble_id_" + String(i) + "_" + String(c))
-				.transition()
-				.style("opacity", normalOpacity)
-				.attr("r", function(d) {
-		            return ((data[i][c])*maxBubbleRadius) + minBubbleRadius;
-		        })
-			
-		
-		}
-	}
+	
+
+
 
 }
 var o = 0;
@@ -65,39 +82,5 @@ var o = 0;
 // 		})
 
 
-for (var i=0; i<daysToShow; i++) {
-		for (var c=0; c<categories; c++) {
-		
-			currentBubbleId = "#bubble_id_" + String(i) + "_" + String(c);
-			console.log(currentBubbleId);
-			
-
-			d3.select("#bubble_id_" + String(i) + "_" + String(c))
-				.transition()
-					.duration(2500)
-					.on("start", function repeat() {
-						d3.active(this)
-							.transition()
-								.style("fill", function(){
-				 					return "red";
-				 				})
-								.attr("cx", function(d) {
-						             console.log(d, currentBubbleId, origin, i, c, coordSys[i][c]);
-						             return 5;
-						             //return origin.x + coordSys[i][c].x + 5;  // Circle's X
-						         })
-						    .transition()
-						    	.style("fill", function(){
-				 					return "blue";
-				 				})
-						        // .attr("cy", function(d) {  // Circle's Y
-						        //     return origin.y + coordSys[i][c].y + 5;
-						        // })
-							.transition()
-			             		.on("start", repeat);
-					    });
-
-		}
-	}
 
 
