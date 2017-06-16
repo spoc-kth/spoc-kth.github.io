@@ -51,6 +51,7 @@ for (var i=0; i<daysToShow; i++) {
                         d3.active(this)
                             .transition()
                                 .duration(1300)
+                                .ease(bubbleEase)
                                 .attr("cx", function(d) {
                                      return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
                                  })
@@ -59,6 +60,7 @@ for (var i=0; i<daysToShow; i++) {
                                 })
                             .transition()
                                 .duration(1300)
+                                .ease(bubbleEase)
                                 .attr("cx", function(d) {
                                      return d.posX + ((getRandomArbitrary(0,1)*moveX)-(moveX/2));
                                  })

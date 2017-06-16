@@ -60,8 +60,9 @@ var origin = {
     'y': canvas_height/2
 }
 // Bubble animation
-var moveX = 5;
-var moveY = 5;
+var moveX = 7;
+var moveY = 7;
+var bubbleEase = d3.easeLinear;
 
 function getRandomInt(min, max) {
 	min = Math.ceil(min);
