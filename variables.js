@@ -3,9 +3,11 @@ var daysPerMonth = 30;
 var angle = 360 / daysPerMonth;
 var currAngle = 0;
 var categories = 8;
-var radius = 40;
 var innerRadius = 50;
 var currRadius = innerRadius;
+var radius = 40;
+var minBubbleRadius = 0;
+var maxBubbleRadius = 20;
 
 var totalItems = daysPerMonth*categories;
 
@@ -20,14 +22,7 @@ var daysToShow = currentDate.getDate();
 
 
 /* 
-Meat #f0a4a6
-Fisk: b1d0cf
-Mejeri och Agg #f0d886
-Frukt och Gront 7a9969
-torrvaror och annat a79787
-Godis, lask, snacks e7a7c9
-Brod och sad f4d626
-Fryen 558dc6
+Bubble colors
 */
 
 var colrMeat = d3.rgb('#f0a4a6');
@@ -49,3 +44,19 @@ var colr7 = colrBread;
 var colr8 = colrFreezer;
 
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
+/*
+Bubble opacity
+*/
+var minOpacity = 0.2;
+var normalOpacity = 0.8;
+var maxOpacity = 0.99;
+
+function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getRandomArbitrary(min, max) {
+	return Math.random() * (max - min) + min;
+}
