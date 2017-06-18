@@ -14,15 +14,15 @@ var div = d3.select("body").append("div")
     .attr("class", "tooltip")               
     .style("opacity", 0);
 
-svg.selectAll("circle")  // Add circle svg
+var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
     .data(bubbleData)
-    .enter()
-        .append('circle')
+
+bubbles.enter().append('circle')
         .attr("class", function(d){
             if (d.radialX < daysToShow) {
-                return "bubble bubble-visible"
+                return "bubble bubble-visible bubble-category-" + String(d.category);
             } else {
-                return "bubble bubble-hidden"
+                return "bubble bubble-hidden bubble-category-" + String(d.category);
             }
         })
         .attr("id", function(d) {
@@ -81,7 +81,52 @@ svg.selectAll("circle")  // Add circle svg
                         .on("start", repeat);
                 });
 
-        
+var forceStrength = 0.03;
+var force = d3.forceCenter([origin.x, origin.y]);
+
+
+
+var categoryBubbles = svg.selectAll("circle.category")  // Add circle svg
+    .data(categoryData);
+
+var categoryBubblesE = categoryBubbles.enter().append('circle')
+        .attr("class", function(d){
+            return "category category-" + String(d.category);
+        })
+        .attr("id", function(d) {
+            return "category_id_" + String(d.category) + "_" + String(d.category);
+        })
+        .attr("cx", function(d) {
+            return d.x;  // Circle's X
+        })
+        .attr("cy", function(d) {  // Circle's Y
+            return d.y;
+        })
+        .attr("r", function(d) {
+            return 0;//((d.value)*maxBubbleRadius) + minBubbleRadius;
+        })
+        .style("fill", function(d) { 
+            return colors[d.category]; 
+        })
+        .on("mouseover", function(d) {     
+            div.transition()        
+                .duration(200)      
+                .style("opacity", .9);      
+            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.value*100)) + "% ekologiskt")  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })                  
+        .on("mouseout", function(d) {       
+            div.transition()        
+                .duration(200)      
+                .style("opacity", 0);   
+        })
+
+    // @v4 Merge the original empty selection and the enter selection
+    categoryBubbles = categoryBubbles.merge(categoryBubbles);
+
+
+   
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
 
 for (var k=0;k<topListData.length;k++) {

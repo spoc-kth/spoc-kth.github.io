@@ -90,6 +90,23 @@ var generateRandomUserDataOneArray = function() {
 	return dataArray;
 }
 
+var updateAggregateCategoryData = function(d) {
+	var totalCategory = 0;
+	var k = 0;
+	for (var j=0; j<daysToShow; j++) {
+		for (var i=0; i<categories; i++) {
+			totalCategory += d[k];
+			categoryData[i].value += d[k];///daysToShow;
+			k += 1;
+		}
+		totalCategory = 0; 
+	}
+	for (var l=0; l<categoryData.length; l++) {
+		categoryData[l].value /= daysToShow;
+	}
+	//console.log(categoryData);
+}
+
 //	Takes an array of bubbleData and a new array. Will add the new data to
 //	bubble array under bubbleData[i].values dictionary
 var updateBubbleData = function(bubbleData, newData, newDataKey) {
@@ -126,9 +143,16 @@ var generateBubbleData = function() {
 
 	}
 	var newData = generateRandomDataOneArray();
-	var usrData = generateRandomUserDataOneArray();
 	dataArray = updateBubbleData(dataArray, newData, 'initial');
+	updateAggregateCategoryData(newData);
+	var usrData = generateRandomUserDataOneArray();
 	dataArray = updateBubbleData(dataArray, usrData, 'user1');
+	usrData = generateRandomUserDataOneArray();
+	dataArray = updateBubbleData(dataArray, usrData, 'user2');
+	usrData = generateRandomUserDataOneArray();
+	dataArray = updateBubbleData(dataArray, usrData, 'user3');
+	usrData = generateRandomUserDataOneArray();
+	dataArray = updateBubbleData(dataArray, usrData, 'user4');
 	return dataArray;
 
 }
@@ -162,5 +186,4 @@ var topListData = [
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
 var bubbleData = generateBubbleData();
-//console.log(bubbleData);
 

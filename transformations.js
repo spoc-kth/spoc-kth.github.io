@@ -41,15 +41,19 @@ var swipeCard = function() {
 }
 
 var resetBubbles = function() {
-
 	var data = randomData;
-
 	d3.selectAll("circle.bubble")
 		.transition()
 		.style("opacity", normalOpacity)
 		.attr("r", function(d) {
                     return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
                 })
+		.attr("cx", function(d) {
+            return d.posX;  // Circle's X
+        })
+        .attr("cy", function(d) {  // Circle's Y
+            return d.posY;
+        })
 		.transition()
 					.delay(function(d) { return getRandomArbitrary(0,1)*1000; })
                     .duration(0)
@@ -78,29 +82,73 @@ var resetBubbles = function() {
                                 .on("start", repeat);
                         });
 
-	
+	d3.selectAll(".category")
+		.transition()
+			.attr("r", function(d) {
+	            return 0;
+	        })
+	        .style("opacity", 0);
+}
 
 
+var mergeBubbles = function() {
+
+	d3.selectAll("circle.bubble")
+		.transition()
+            .ease(bubbleEase)
+            .attr("cx", function(d) {
+                 return origin.x;
+             })
+            .attr("cy", function(d) {  // Circle's Y
+                return origin.y;
+            })
 
 }
-var o = 0;
-// d3.selectAll("circle.bubble")
-// 	.transition()
-// 		.duration(2500)
-// 		.delay(function(d, i) { 
-// 			return i * 50; 
-// 		})
-// 		.on("start", function repeat() {
-// 			d3.active(this)
-// 				.style("fill", function(){
-// 					return "red";
-// 				})
-// 				.transition()
-// 					.style("fill", "blue")
-// 				.transition()
-//             		.on("start", repeat);
-// 		})
 
+var mergeCategories = function() {
+	console.log("merge yooo");
+	for (var i=0; i<categories; i++) {
+
+		var currentCat = ".bubble-category-" + String(i);
+		d3.selectAll(currentCat)
+		.transition()
+            .ease(bubbleEase)
+            .attr("cx", function(d) {
+                 //return origin.x;
+                 return categoryPositions[d.category].x;
+             })
+            .attr("cy", function(d) {  // Circle's Y
+                //return origin.y;
+                return  categoryPositions[d.category].y;
+            })
+        .transition()
+        	.style("opacity", 0);
+	}
+    d3.selectAll(".category")
+    .transition()
+    	.attr("r", function(d) {
+            return ((d.value)*(maxBubbleRadius*5)) + minBubbleRadius;
+        })
+        .attr("cx", function(d) {
+        	//console.log(d);
+        	//return origin.x;
+            return categoryPositions[d.category].x;
+         })
+        .attr("cy", function(d) {  // Circle's Y
+        	//console.log(d);
+            //return origin.y;
+            return  categoryPositions[d.category].y;
+        })
+        .style("opacity", normalOpacity);
+
+}
+
+var forceMerge = function() {
+	console.log("yo");
+	simulation.force('x', d3.forceX().strength(forceStrength).x(d.x));
+    simulation.force('y', d3.forceY().strength(forceStrength).y(d.y));
+    simulation.alpha(1).restart();
+}
 
 
 

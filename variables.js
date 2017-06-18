@@ -51,6 +51,7 @@ var colr8 = colrFreezer;
 
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
 var categoryLabels = ["Kött", "Fisk", "Mejeri", "Frukt & grönt", "Torrvaror", "Snacks", "Bröd", "Frys"];
+
 // Bubble opacity
 var minOpacity = 0.2;
 var normalOpacity = 0.8;
@@ -67,9 +68,44 @@ var moveX = 7;
 var moveY = 7;
 var bubbleEase = d3.easeLinear;
 
+var step = 60;
+var categoryPositions = [
+	{ 'x': origin.x-step*2, 'y': origin.y+step },
+	{ 'x': origin.x-(step), 'y': origin.y+step },
+	{ 'x': origin.x+(step), 'y': origin.y+step },
+	{ 'x': origin.x+step*2, 'y': origin.y+step },
+	{ 'x': origin.x-step*2, 'y': origin.y-step },
+	{ 'x': origin.x-(step), 'y': origin.y-step },
+	{ 'x': origin.x+(step), 'y': origin.y-step },
+	{ 'x': origin.x+step*2, 'y': origin.y-step },
+];
+var categoryPositions = [
+	{ 'x': origin.x, 'y': origin.y },
+	{ 'x': origin.x-(step*1.2), 'y': origin.y+(step*1.2) },
+	{ 'x': origin.x+(step*0.6), 'y': origin.y+(step*1.5) },
+	{ 'x': origin.x+step*2, 'y': origin.y+step },
+	{ 'x': origin.x-step*2, 'y': origin.y+(step/6) },
+	{ 'x': origin.x-(step), 'y': origin.y-step },
+	{ 'x': origin.x+(step*0.9), 'y': origin.y-(step*1.35) },
+	{ 'x': origin.x+step*2.3, 'y': origin.y-(step*0.5) },
+];
+var categoryData = [];
+
+for (var i=0; i<categories; i++) {
+	categoryData[i] = {
+				'value': 0,
+				'x': categoryPositions[i].x,
+				'y': categoryPositions[i].y,
+				'category': i,
+				'label': ''
+			};
+}
+
 // Store name
 var storeName = "COOP Norra Djurgårdsstaden";
 
+
+// number functions
 function getRandomInt(min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
