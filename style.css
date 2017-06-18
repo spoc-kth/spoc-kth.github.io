@@ -23,11 +23,15 @@ circle {
 	text-align: left;
 	border: 2px solid seagreen;
 }
+.toplist .toplistPercentage {
+	float: right;
+}
 .toplist li:nth-child(1) {
 	margin-bottom: 30px;
 }
-.toplist .toplistPercentage {
-	float: right;
+.toplist li:nth-child(3) {
+	background: seagreen;
+	color: white;
 }
 
 div.tooltip {   
