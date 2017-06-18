@@ -93,7 +93,6 @@ var generateRandomUserDataOneArray = function() {
 //	Takes an array of bubbleData and a new array. Will add the new data to
 //	bubble array under bubbleData[i].values dictionary
 var updateBubbleData = function(bubbleData, newData, newDataKey) {
-	console.log("oo");
 	var j = 0;
 	for (var i=0; i<daysPerMonth; i++) {
 		for (var c=0; c<categories; c++) {
@@ -133,9 +132,35 @@ var generateBubbleData = function() {
 	return dataArray;
 
 }
+var storeNames = ["COOP Järna", "COOP Fridhemsplan", "COOP Gnesta"];
+var generateTopList = function(size) {
+	var dataArray = [];
+}
+var topListData = [
+	{
+		'name': "COOP Järna",
+		'value': 0.3345,
+		'position': 1
+	},
+	{
+		'name': "COOP Järna",
+		'value': 0.132,
+		'position': 16
+	},
+	{
+		'name': storeName,
+		'value': 0.112,
+		'position': 17
+	},
+	{
+		'name': "COOP Järna",
+		'value': 0.0845,
+		'position': 18
+	}
+];
 
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
 var bubbleData = generateBubbleData();
-console.log(bubbleData);
+//console.log(bubbleData);
 

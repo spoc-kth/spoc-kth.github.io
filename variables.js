@@ -14,8 +14,11 @@ var angle = 360 / daysPerMonth;
 var currAngle = 0;
 var innerRadius = 50;
 var currRadius = innerRadius;
-var radius = 40;
+var radius = 30;
 var categories = 8;
+
+var canvas_width = 615;
+var canvas_height = 615;
 // Bubbles
 var minBubbleRadius = 0;
 var maxBubbleRadius = 20;
@@ -47,14 +50,14 @@ var colr7 = colrBread;
 var colr8 = colrFreezer;
 
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
+var categoryLabels = ["Kött", "Fisk", "Mejeri", "Frukt & grönt", "Torrvaror", "Snacks", "Bröd", "Frys"];
 // Bubble opacity
 var minOpacity = 0.2;
 var normalOpacity = 0.8;
 var maxOpacity = 0.99;
 
 // Setup settings for graphic
-var canvas_width = 800;
-var canvas_height = 800;
+
 var origin = {
     'x': canvas_width/2,
     'y': canvas_height/2
@@ -63,6 +66,9 @@ var origin = {
 var moveX = 7;
 var moveY = 7;
 var bubbleEase = d3.easeLinear;
+
+// Store name
+var storeName = "COOP Norra Djurgårdsstaden";
 
 function getRandomInt(min, max) {
 	min = Math.ceil(min);

@@ -9,9 +9,37 @@ circle {
 	opacity: 0.8;
 }
 
-.container {
+.vis-container {
 	background-color: rgba(255,255,255,0.8);
+	margin: 30px;
 }
 .bubble-hidden {
 	display: none;
+}
+
+.toplist li {
+	padding: 8px 15px;
+	margin: 10px 20px;
+	text-align: left;
+	border: 2px solid seagreen;
+}
+.toplist li:nth-child(1) {
+	margin-bottom: 30px;
+}
+.toplist .toplistPercentage {
+	float: right;
+}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: auto;                  
+  height: auto;                 
+  padding: 6px 9px;             
+  font: 12px sans-serif;        
+  background: seagreen;
+  color: white;
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
 }

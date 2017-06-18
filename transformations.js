@@ -3,23 +3,41 @@ var swipeCard = function() {
 	var data = randomUserData;
 	
 	d3.selectAll("circle.bubble")
+		.on("mouseover", function(d) {      
+            div.transition()        
+                .duration(200)      
+                .style("opacity", .9);  
+            var tooltipText = "";
+            if(d.values['user1'] > 0) {
+            	tooltipText = String(Math.round(d.values['user1']*100))
+            } else {
+            	tooltipText = String(Math.round(d.values['initial']*100))
+            }
+
+            div.html(categoryLabels[d.category] + ": " + tooltipText + "% ekologiskt")  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })                  
+        .on("mouseout", function(d) {       
+            div.transition()        
+                .duration(200)      
+                .style("opacity", 0);   
+        })
 		.transition()
 			.style("opacity", function(d) {
-				if(data[d.radialX][d.radialY] > 0) {
+				if(d.values['user1'] > 0) {
 					return maxOpacity;
 				} else {
 					return minOpacity;
 				}
 			})
 			.attr("r", function(d) {
-				if(data[d.radialX][d.radialY] > 0) {
-			       return ((data[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+				if(d.values['user1'] > 0) {
+			       return ((d.values['user1'])*maxBubbleRadius) + minBubbleRadius;
 			    } else {
-			    	return ((randomData[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+			    	return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
 			    }
 			    })
-
-
 }
 
 var resetBubbles = function() {
@@ -30,9 +48,10 @@ var resetBubbles = function() {
 		.transition()
 		.style("opacity", normalOpacity)
 		.attr("r", function(d) {
-                    return ((data[d.radialX][d.radialY])*maxBubbleRadius) + minBubbleRadius;
+                    return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
                 })
 		.transition()
+					.delay(function(d) { return getRandomArbitrary(0,1)*1000; })
                     .duration(0)
                     .on("start", function repeat() {
                         d3.active(this)
