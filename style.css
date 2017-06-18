@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Covered+By+Your+Grace');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
 body {
-    font-family: sans-serif;
+    font-family: 'Permanent Marker', cursive;
+    font-family: 'Covered By Your Grace', cursive;
+    text-transform: uppercase;
     text-align: center;
     background: url('img/bg.png');
     background-size: cover;
