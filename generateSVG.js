@@ -86,10 +86,10 @@ var force = d3.forceCenter([origin.x, origin.y]);
 
 
 
-var categoryBubbles = svg.selectAll("circle.category")  // Add circle svg
+var categoryBubbles = svg.selectAll(".category")  // Add circle svg
     .data(categoryData);
 
-var categoryBubblesE = categoryBubbles.enter().append('circle')
+var categoryGroupBubbles = categoryBubbles.enter().append('g')
         .attr("class", function(d){
             return "category category-" + String(d.category);
         })
@@ -102,12 +102,7 @@ var categoryBubblesE = categoryBubbles.enter().append('circle')
         .attr("cy", function(d) {  // Circle's Y
             return d.y;
         })
-        .attr("r", function(d) {
-            return 0;//((d.value)*maxBubbleRadius) + minBubbleRadius;
-        })
-        .style("fill", function(d) { 
-            return colors[d.category]; 
-        })
+        .style("opacity", 0)
         .on("mouseover", function(d) {     
             div.transition()        
                 .duration(200)      
@@ -122,8 +117,35 @@ var categoryBubblesE = categoryBubbles.enter().append('circle')
                 .style("opacity", 0);   
         })
 
+
+categoryGroupBubbles.append('circle')
+        .attr("cx", function(d) {
+            return d.x;  // Circle's X
+        })
+        .attr("cy", function(d) {  // Circle's Y
+            return d.y;
+        })
+        .attr("r", function(d) {
+            return 0;//((d.value)*maxBubbleRadius) + minBubbleRadius;
+        })
+        .style("fill", function(d) { 
+            return colors[d.category]; 
+        })
+
+categoryGroupBubbles.append('text')
+    .attr("x", function(d) {
+            return d.x - ((d.value)*maxBubbleRadius*5)/2;  // Circle's X
+        })
+        .attr("y", function(d) {  // Circle's Y
+            return d.y;
+        })
+    .attr("dy", ".35em")
+    .text(function(d) { 
+        return String(Math.round(d.value*100)) + "%"; 
+    });
+
     // @v4 Merge the original empty selection and the enter selection
-    categoryBubbles = categoryBubbles.merge(categoryBubbles);
+    categoryBubbles = categoryBubbles.merge(categoryGroupBubbles);
 
 
    

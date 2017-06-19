@@ -21,6 +21,9 @@ circle {
 .bubble-hidden {
 	display: none;
 }
+.category {
+  font-size: 2.3em; 
+}
 
 .toplist li {
 	padding: 8px 15px;

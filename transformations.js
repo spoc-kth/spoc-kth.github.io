@@ -106,7 +106,6 @@ var mergeBubbles = function() {
 }
 
 var mergeCategories = function() {
-	console.log("merge yooo");
 	for (var i=0; i<categories; i++) {
 
 		var currentCat = ".bubble-category-" + String(i);
@@ -126,25 +125,26 @@ var mergeCategories = function() {
 	}
     d3.selectAll(".category")
     .transition()
-    	.attr("r", function(d) {
+        .style("opacity", normalOpacity);
+    d3.selectAll(".category circle")
+    .transition()
+        .attr("r", function(d) {
             return ((d.value)*(maxBubbleRadius*5)) + minBubbleRadius;
         })
         .attr("cx", function(d) {
-        	//console.log(d);
-        	//return origin.x;
+            //console.log(d);
+            //return origin.x;
             return categoryPositions[d.category].x;
          })
         .attr("cy", function(d) {  // Circle's Y
-        	//console.log(d);
+            //console.log(d);
             //return origin.y;
             return  categoryPositions[d.category].y;
         })
-        .style("opacity", normalOpacity);
 
 }
 
 var forceMerge = function() {
-	console.log("yo");
 	simulation.force('x', d3.forceX().strength(forceStrength).x(d.x));
     simulation.force('y', d3.forceY().strength(forceStrength).y(d.y));
     simulation.alpha(1).restart();
