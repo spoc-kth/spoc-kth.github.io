@@ -1,3 +1,21 @@
+function createLegend() {
+    var legendUl = document.getElementById("legend");
+    for (var i=0; i<categoryLabels.length; i++) {
+        var li = document.createElement("li");
+        var legendColr = document.createElement("span");
+        legendColr.className = "legend-color";
+        legendColr.style.background = colors[i];
+        var legendTitle = document.createElement("span");
+        legendTitle.className = "legend-title";
+        legendTitle.innerHTML = categoryLabels[i];
+        li.appendChild(legendColr);
+        li.appendChild(legendTitle);
+        legendUl.appendChild(li);
+    }
+}
+
+createLegend();
+
 // **************************************************
 
 
@@ -150,7 +168,32 @@ categoryGroupBubbles.append('text')
 
    
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
+function CurrentMonthName ()
+{
+    var dateObj = new Date();
+    // create an array
+    var monthsArr = new Array();
+    // get current month
+    var currMonth = dateObj.getMonth();
+    // store month names into our array
+    monthsArr[0] = "Januari";
+    monthsArr[1] = "Februari";
+    monthsArr[2] = "Mars";
+    monthsArr[3] = "April";
+    monthsArr[4] = "Maj";
+    monthsArr[5] = "Juni";
+    monthsArr[6] = "Juli";
+    monthsArr[7] = "Augusti";
+    monthsArr[8] = "September";
+    monthsArr[9] = "Oktober";
+    monthsArr[10] = "November";
+    monthsArr[11] = "December";
+    return monthsArr[currMonth];
+}
 
+document.getElementById("currentMonthName").innerHTML = CurrentMonthName();
+
+/*
 for (var k=0;k<topListData.length;k++) {
     var j = k+1;
     var number = document.getElementById("toplistNumber" + String(j));
@@ -162,5 +205,5 @@ for (var k=0;k<topListData.length;k++) {
     var p = topListData[k].value*100;
     p = Math.round(p);
     percentage.innerHTML =  String(p) + "%";
-}
+}*/
 

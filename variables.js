@@ -7,7 +7,8 @@ var currentMonth = currentDate.getMonth() + 1;
 var currentYear = currentDate.getFullYear();
 var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate();
 
-var daysToShow = currentDate.getDate();
+//daysToShow = currentDate.getDate();
+daysToShow = 22;
 
 // Circle variables
 var angle = 360 / daysPerMonth;

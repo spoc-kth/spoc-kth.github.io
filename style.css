@@ -18,6 +18,7 @@ circle {
 .vis-container {
 	background-color: rgba(255,255,255,0.8);
 	margin: 30px;
+  padding: 30px;
 }
 .bubble-hidden {
 	display: none;
@@ -55,4 +56,22 @@ div.tooltip {
   border: 0px;      
   border-radius: 8px;           
   pointer-events: none;         
+}
+
+/* LEGEND
+============================================
+*/
+.legend {
+  text-align: left;
+}
+.legend li {
+  margin: 3px 0;
+}
+.legend-color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  border-radius: 100%;
 }
