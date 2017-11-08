@@ -1,12 +1,40 @@
+/*  SLIDER TRANSITIONS ==========================
+*/
+var slides = document.querySelectorAll('#slides .slide');
+var currentSlide = 0;
+var slideInterval = setInterval(nextSlide,4000);
+
+function nextSlide(){
+	slides[currentSlide].className = 'slide';
+	currentSlide = (currentSlide+1)%slides.length;
+	slides[currentSlide].className = 'slide showing';
+}
+
+
+
+/* INTERACTIONS =========================
+*/
+
+var showGrocerySuggestions = function() {
+    var suggestions = document.getElementById("suggestions");
+    suggestions.style.display = "block";
+}
+var hideGrocerySuggestions = function() {
+    var suggestions = document.getElementById("suggestions");
+    suggestions.style.display = "none";
+}
+
+
+
 var swipeCard = function() {
 
 	var data = randomUserData;
-	
+
 	d3.selectAll("circle.bubble")
-		.on("mouseover", function(d) {      
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);  
+		.on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
             var tooltipText = "";
             if(d.values['user1'] > 0) {
             	tooltipText = String(Math.round(d.values['user1']*100))
@@ -14,14 +42,14 @@ var swipeCard = function() {
             	tooltipText = String(Math.round(d.values['initial']*100))
             }
 
-            div.html(categoryLabels[d.category] + ": " + tooltipText + "% ekologiskt")  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(200)      
-                .style("opacity", 0);   
+            div.html(categoryLabels[d.category] + ": " + tooltipText + "% ekologiskt")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
         })
 		.transition()
 			.style("opacity", function(d) {
@@ -37,7 +65,9 @@ var swipeCard = function() {
 			    } else {
 			    	return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
 			    }
-			    })
+			    });
+
+    //showGrocerySuggestions();
 }
 
 var resetBubbles = function() {
@@ -88,6 +118,8 @@ var resetBubbles = function() {
 	            return 0;
 	        })
 	        .style("opacity", 0);
+
+    hideGrocerySuggestions();
 }
 
 
@@ -149,6 +181,3 @@ var forceMerge = function() {
     simulation.force('y', d3.forceY().strength(forceStrength).y(d.y));
     simulation.alpha(1).restart();
 }
-
-
-

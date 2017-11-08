@@ -13,16 +13,17 @@ daysToShow = currentDate.getDate();
 // Circle variables
 var angle = 360 / daysPerMonth;
 var currAngle = 0;
-var innerRadius = 50;
+var innerRadius = 30;
 var currRadius = innerRadius;
-var radius = 30;
+var radius = 6;
 var categories = 8;
+categories = 50;
 
 var canvas_width = 615;
 var canvas_height = 615;
 // Bubbles
-var minBubbleRadius = 0;
-var maxBubbleRadius = 20;
+var minBubbleRadius = 5;
+var maxBubbleRadius = 5;
 
 var totalItems = daysPerMonth*categories;
 
@@ -31,6 +32,8 @@ var totalItems = daysPerMonth*categories;
 /* 
 Bubble colors
 */
+
+var baseColor = d3.rgb('#228B22');
 
 var colrMeat = d3.rgb('#f0a4a6');
 var colrFish = d3.rgb('#b1d0cf');
@@ -95,8 +98,8 @@ var categoryData = [];
 for (var i=0; i<categories; i++) {
 	categoryData[i] = {
 				'value': 0,
-				'x': categoryPositions[i].x,
-				'y': categoryPositions[i].y,
+				//'x': categoryPositions[i].x,
+				//'y': categoryPositions[i].y,
 				'category': i,
 				'label': ''
 			};
