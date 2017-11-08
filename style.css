@@ -17,15 +17,12 @@ circle {
 }
 
 .vis-container {
-	background-color: rgba(255,255,255,0.8);
-	margin: 30px;
-  padding: 30px;
 }
 .bubble-hidden {
 	display: none;
 }
 .category {
-  font-size: 2.3em; 
+  font-size: 2.3em;
 }
 
 .toplist li {
@@ -45,34 +42,60 @@ circle {
 	color: white;
 }
 
-div.tooltip {   
-  position: absolute;           
-  text-align: center;           
-  width: auto;                  
-  height: auto;                 
-  padding: 6px 9px;             
-  font: 12px sans-serif;        
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 6px 9px;
+  font: 12px sans-serif;
   background: seagreen;
   color: white;
-  border: 0px;      
-  border-radius: 8px;           
-  pointer-events: none;         
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }
 
-/* LEGEND
+/* SLIDES
 ============================================
 */
-.legend {
-  text-align: left;
+/*
+essential styles:
+these make the slideshow work
+*/
+#slides{
+	position: relative;
+	padding: 0px;
+	margin: 20px;
+	list-style-type: none;
 }
-.legend li {
-  margin: 3px 0;
+
+.slide{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	opacity: 0;
+	z-index: 1;
+
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
 }
-.legend-color {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-  border-radius: 100%;
+
+.showing{
+	opacity: 1;
+	z-index: 2;
+}
+
+/*
+non-essential styles:
+just for appearance; change whatever you want
+*/
+
+.slide{
+	padding: 30px;
+	box-sizing: border-box;
+	background: rgba(255,255,255,0.8);
 }
