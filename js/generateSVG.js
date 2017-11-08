@@ -8,7 +8,10 @@ function initMap() {
     zoom: 12,
     center: stockholm
   });
-
+  var styledMapType = new google.maps.StyledMapType(mapStyle_oldschool);
+  //Associate the styled map with the MapTypeId and set it to display.
+  map.mapTypes.set('styled_map', styledMapType);
+  map.setMapTypeId('styled_map');
   // positions
   var uluru = {lat: -25.363, lng: 131.044};
 
