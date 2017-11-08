@@ -1,20 +1,4 @@
-function createLegend() {
-    var legendUl = document.getElementById("legend");
-    for (var i=0; i<categoryLabels.length; i++) {
-        var li = document.createElement("li");
-        var legendColr = document.createElement("span");
-        legendColr.className = "legend-color";
-        legendColr.style.background = colors[i];
-        var legendTitle = document.createElement("span");
-        legendTitle.className = "legend-title";
-        legendTitle.innerHTML = categoryLabels[i];
-        li.appendChild(legendColr);
-        li.appendChild(legendTitle);
-        legendUl.appendChild(li);
-    }
-}
 
-createLegend();
 
 // **************************************************
 
@@ -35,7 +19,7 @@ var div = d3.select("body").append("div")
 var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
     .data(bubbleData)
 
-bubbles.enter().append('circle')
+bubbles.enter().append('rect')
         .attr("class", function(d){
             if (d.radialX < daysToShow) {
                 return "bubble bubble-visible bubble-category-" + String(d.category);
@@ -46,17 +30,25 @@ bubbles.enter().append('circle')
         .attr("id", function(d) {
             return "bubble_id_" + String(d.radialX) + "_" + String(d.radialY);
         })
-        .attr("cx", function(d) {
+        .attr("x", function(d) {
             return d.posX;  // Circle's X
         })
-        .attr("cy", function(d) {  // Circle's Y
+        .attr("y", function(d) {  // Circle's Y
             return d.posY;
         })
-        .attr("r", function(d) {
-            return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
+        .attr("width", function(d) {
+            return minBubbleRadius;
+        })
+        .attr("height", function(d) {
+            return maxBubbleRadius;
         })
         .style("fill", function(d) { 
-            return colors[d.radialY]; 
+            return baseColor;
+            //return colors[d.radialY]; 
+        })
+        .style("opacity", function(d) { 
+            return d.values.initial;
+            //return colors[d.radialY]; 
         })
         .on("mouseover", function(d) {     
             div.transition()        
@@ -71,6 +63,7 @@ bubbles.enter().append('circle')
                 .duration(200)      
                 .style("opacity", 0);   
         })
+        /*
         .transition()
             .delay(function(d) { return getRandomArbitrary(0,1)*1000; })
             .duration(0)
@@ -98,6 +91,7 @@ bubbles.enter().append('circle')
                         .duration(0)
                         .on("start", repeat);
                 });
+        */
 
 var forceStrength = 0.03;
 var force = d3.forceCenter([origin.x, origin.y]);

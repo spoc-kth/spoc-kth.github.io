@@ -9,6 +9,7 @@ body {
     text-align: center;
     background: url('img/bg.png');
     background-size: cover;
+    background-attachment: fixed;
 }
 
 circle {

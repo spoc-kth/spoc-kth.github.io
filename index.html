@@ -6,12 +6,15 @@
     <!-- Load D3 from site -->
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3-ease.v1.min.js"></script>
- 
+
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
- 
+
   <body>
+
+    
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -21,29 +24,16 @@
                 <h3>En visualisering av våra kunders ekologiska inköp</h3>
             </div>
             <div class="row">
-               <div class="col-md-3">
-                <h4>Legend</h4>
-                <ul id="legend" class="list-unstyled legend">
-                </ul>
 
-                <p>
-                  <button class="btn btn-default buttons" type="button" onclick="swipeCard()">Swipe my card</button> 
-                  <button class="btn btn-default buttons" type="button" onclick="resetBubbles()">Reset</button>
-                </p>
-                <p>
-                  <button class="btn btn-default buttons" type="button" onclick="mergeCategories()">Merge</button>
-                </p> 
-              </div>
-              <div class="col-md-9">
+              <div class="col-md-12" style="text-align: left;">
                 <div id="svg"></div>
-                
               </div>
 
-              <!-- 
+              <!-- old toplist
               <div class="col-md-5">
                 <h1><img src="img/logo1.png"/></h1>
                 <div class="container-toplist">
-                  
+
                   <ul class="list-unstyled toplist" id="toplist">
                     <li>
                       #<span class="toplistNumber" id="toplistNumber1">1</span> <span class="toplistName" id="toplistName1">COOP Järna</span> <span class="toplistPercentage" id="toplistPercentage1">33%</span>
@@ -60,12 +50,12 @@
                   </ul>
                   </div>
                 <p>
-                  <button class="btn btn-default buttons" type="button" onclick="swipeCard()">Swipe my card</button> 
+                  <button class="btn btn-default buttons" type="button" onclick="swipeCard()">Swipe my card</button>
                   <button class="btn btn-default buttons" type="button" onclick="resetBubbles()">Reset</button>
                 </p>
                 <p>
                   <button class="btn btn-default buttons" type="button" onclick="mergeCategories()">Merge</button>
-                </p>  
+                </p>
               </div>
               -->
 

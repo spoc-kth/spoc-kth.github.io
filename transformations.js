@@ -1,3 +1,14 @@
+var showGrocerySuggestions = function() {
+    var suggestions = document.getElementById("suggestions");
+    suggestions.style.display = "block";
+}
+var hideGrocerySuggestions = function() {
+    var suggestions = document.getElementById("suggestions");
+    suggestions.style.display = "none";
+}
+
+
+
 var swipeCard = function() {
 
 	var data = randomUserData;
@@ -37,7 +48,9 @@ var swipeCard = function() {
 			    } else {
 			    	return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
 			    }
-			    })
+			    });
+
+    //showGrocerySuggestions();
 }
 
 var resetBubbles = function() {
@@ -88,6 +101,8 @@ var resetBubbles = function() {
 	            return 0;
 	        })
 	        .style("opacity", 0);
+
+    hideGrocerySuggestions();
 }
 
 
