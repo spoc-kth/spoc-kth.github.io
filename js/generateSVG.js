@@ -81,11 +81,15 @@ bubbles.enter().append('rect')
             return maxBubbleRadius;
         })
         .style("fill", function(d) {
-            return baseColor;
+            var tempColor = baseColor;
+            //console.log(d.values.initial);
+            tempColor.s = d.values.initial;
+            return tempColor;
             //return colors[d.radialY];
         })
         .style("opacity", function(d) {
-            return d.values.initial;
+            return 1;
+            //return d.values.initial;
             //return colors[d.radialY];
         })
         .on("mouseover", function(d) {

@@ -33,7 +33,12 @@ var totalItems = daysPerMonth*categories;
 Bubble colors
 */
 
-var baseColor = d3.rgb('#228B22');
+// green 228B22
+var baseH = 120;
+var baseS = 76;
+var baseV = 55;
+var baseColr = d3.rgb('#228B22');
+var baseColor = d3.hsl(baseColr);
 
 var colrMeat = d3.rgb('#f0a4a6');
 var colrFish = d3.rgb('#b1d0cf');
