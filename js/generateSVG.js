@@ -1,4 +1,39 @@
 
+// *************************************************
+// MAP
+function initMap() {
+  var stockholm = {lat: 59.336447, lng: 18.067980};
+  // map
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: stockholm
+  });
+
+  // positions
+  var uluru = {lat: -25.363, lng: 131.044};
+
+  var coopNorraD = {lat: 59.358553, lng: 18.091486};
+  var coopHotorget = {lat: 59.335285, lng: 18.063257};
+  var coopCentralen = {lat: 59.330026, lng: 18.058139};
+  var coopOstermalm = {lat: 59.336766, lng: 18.080502};
+  var kth = {lat: 59.347367, lng: 18.074351};
+
+  // markers
+  var marker1 = new google.maps.Marker({
+    position: coopNorraD,
+    map: map
+  });
+  var marker2 = new google.maps.Marker({
+    position: coopOstermalm,
+    map: map
+  });
+  var marker3 = new google.maps.Marker({
+    position: coopCentralen,
+    map: map
+  });
+}
+
+
 
 // **************************************************
 
@@ -10,10 +45,10 @@ var svg = d3.select("#svg")  // This is where we put our vis
     .attr("height", canvas_height);
 
 
-var data = randomData; 
+var data = randomData;
 
-var div = d3.select("body").append("div")   
-    .attr("class", "tooltip")               
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
     .style("opacity", 0);
 
 var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
@@ -42,26 +77,26 @@ bubbles.enter().append('rect')
         .attr("height", function(d) {
             return maxBubbleRadius;
         })
-        .style("fill", function(d) { 
+        .style("fill", function(d) {
             return baseColor;
-            //return colors[d.radialY]; 
+            //return colors[d.radialY];
         })
-        .style("opacity", function(d) { 
+        .style("opacity", function(d) {
             return d.values.initial;
-            //return colors[d.radialY]; 
+            //return colors[d.radialY];
         })
-        .on("mouseover", function(d) {     
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);      
-            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.values.initial*100)) + "% ekologiskt")  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(200)      
-                .style("opacity", 0);   
+        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.values.initial*100)) + "% ekologiskt")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
         })
         /*
         .transition()
@@ -115,18 +150,18 @@ var categoryGroupBubbles = categoryBubbles.enter().append('g')
             return d.y;
         })
         .style("opacity", 0)
-        .on("mouseover", function(d) {     
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);      
-            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.value*100)) + "% ekologiskt")  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(200)      
-                .style("opacity", 0);   
+        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.value*100)) + "% ekologiskt")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
         })
 
 
@@ -140,8 +175,8 @@ categoryGroupBubbles.append('circle')
         .attr("r", function(d) {
             return 0;//((d.value)*maxBubbleRadius) + minBubbleRadius;
         })
-        .style("fill", function(d) { 
-            return colors[d.category]; 
+        .style("fill", function(d) {
+            return colors[d.category];
         })
 
 categoryGroupBubbles.append('text')
@@ -152,15 +187,15 @@ categoryGroupBubbles.append('text')
             return d.y;
         })
     .attr("dy", ".35em")
-    .text(function(d) { 
-        return String(Math.round(d.value*100)) + "%"; 
+    .text(function(d) {
+        return String(Math.round(d.value*100)) + "%";
     });
 
     // @v4 Merge the original empty selection and the enter selection
     categoryBubbles = categoryBubbles.merge(categoryGroupBubbles);
 
 
-   
+
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
 function CurrentMonthName ()
 {
@@ -200,4 +235,3 @@ for (var k=0;k<topListData.length;k++) {
     p = Math.round(p);
     percentage.innerHTML =  String(p) + "%";
 }*/
-

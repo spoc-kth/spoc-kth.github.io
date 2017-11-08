@@ -41,7 +41,9 @@
               </div> <!-- end vis container -->
             </li>
             <!-- Slide 2, map -->
-          	<li class="slide">Slide 2</li>
+          	<li class="slide ">
+              <div id="map"></div>
+            </li>
             <!-- slide 3 -->
           	<li class="slide">Slide 3</li>
           </ul>
@@ -54,10 +56,13 @@
       </div>
     </div>
   <!-- Begin D3 Javascript -->
-  <script src="variables.js" type="text/javascript"></script>
-  <script src="radialCoordinates.js" type="text/javascript"></script>
-  <script src="generateData.js" type="text/javascript"></script>
-  <script src="generateSVG.js" type="text/javascript"></script>
-  <script src="transformations.js" type="text/javascript"></script>
+  <script src="js/variables.js" type="text/javascript"></script>
+  <script src="js/radialCoordinates.js" type="text/javascript"></script>
+  <script src="js/generateData.js" type="text/javascript"></script>
+  <script src="js/generateSVG.js" type="text/javascript"></script>
+  <script src="js/transformations.js" type="text/javascript"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsgLkAVaBiJs808FbyWbQdvHVLbcSTv2k&callback=initMap">
+    </script>
   </body>
 </html>
