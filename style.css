@@ -11,12 +11,13 @@ body {
   text-align: center;
   background: url("assets/high.mp4");
   background-size: cover;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+ }
 
 circle {
   opacity: 0.8; }
 
-.title {
+.title h2 {
   font-family: "runda", sans-serif;
   font-weight: 300;
   font-size: 38px;
@@ -26,7 +27,7 @@ circle {
 .title h3 {
   font-family: "ff-market-web", cursive, cursive;
   color: #00AA46;
-  margin-left: 105px; }
+}
 
 .vis-container {
 }
@@ -118,6 +119,13 @@ just for appearance; change whatever you want
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 10px 5px 5px black; }
+
+.video-white-frame {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 .fullscreen-bg {
   position: fixed;
