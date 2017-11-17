@@ -1,20 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Covered+By+Your+Grace');
+/*@import url('https://fonts.googleapis.com/css?family=Covered+By+Your+Grace');
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
-
+*/
+/* This are the Variables */
 body {
-    font-family: 'Droid Sans', sans-serif;
-    /* font-family: 'Covered By Your Grace', cursive; */
-    text-transform: uppercase;
-    text-align: center;
-    background: url('img/bg.png');
-    background-size: cover;
-    background-attachment: fixed;
-}
+  /*font-family: 'Runda', sans-serif;
+  */
+  /* font-family: 'Covered By Your Grace', cursive; */
+  text-transform: uppercase;
+  text-align: center;
+  background: url("assets/high.mp4");
+  background-size: cover;
+  background-attachment: fixed; }
 
 circle {
-	opacity: 0.8;
-}
+  opacity: 0.8; }
+
+.title {
+  font-family: "runda", sans-serif;
+  font-weight: 300;
+  font-size: 38px;
+  color: white;
+  line-height: 0.3em; }
+
+.title h3 {
+  font-family: "ff-market-web", cursive, cursive;
+  color: #00AA46;
+  margin-left: 105px; }
 
 .vis-container {
 }
@@ -25,28 +37,26 @@ circle {
   stroke: red;
 }
 .bubble-hidden {
-	display: none;
-}
+  display: none; }
+
 .category {
-  font-size: 2.3em;
-}
+  font-size: 2.3em; }
 
 .toplist li {
-	padding: 8px 15px;
-	margin: 10px 20px;
-	text-align: left;
-	border: 2px solid seagreen;
-}
+  padding: 8px 15px;
+  margin: 10px 20px;
+  text-align: left;
+  border: 2px solid seagreen; }
+
 .toplist .toplistPercentage {
-	float: right;
-}
+  float: right; }
+
 .toplist li:nth-child(1) {
-	margin-bottom: 30px;
-}
+  margin-bottom: 30px; }
+
 .toplist li:nth-child(3) {
-	background: seagreen;
-	color: white;
-}
+  background: seagreen;
+  color: white; }
 
 div.tooltip {
   position: absolute;
@@ -59,8 +69,7 @@ div.tooltip {
   color: white;
   border: 0px;
   border-radius: 8px;
-  pointer-events: none;
-}
+  pointer-events: none; }
 
 
 /*
@@ -69,9 +78,7 @@ div.tooltip {
 #map {
   width: 100%;
   height: 500px;
-  background-color: grey;
-}
-
+  background-color: grey; }
 
 /* SLIDES
 ============================================
@@ -80,39 +87,52 @@ div.tooltip {
 essential styles:
 these make the slideshow work
 */
-#slides{
-	position: relative;
-	padding: 0px;
-	margin: 20px;
-	list-style-type: none;
-}
+#slides {
+  position: relative;
+  padding: 0px;
+  margin: 20px;
+  list-style-type: none; }
 
-.slide{
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	opacity: 0;
-	z-index: 1;
+.slide {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s; }
 
-	-webkit-transition: opacity 1s;
-	-moz-transition: opacity 1s;
-	-o-transition: opacity 1s;
-	transition: opacity 1s;
-}
-
-.showing{
-	opacity: 1;
-	z-index: 2;
-}
+.showing {
+  opacity: 1;
+  z-index: 2; }
 
 /*
 non-essential styles:
 just for appearance; change whatever you want
 */
+.slide {
+  padding: 30px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 10px 5px 5px black; }
 
-.slide{
-	padding: 30px;
-	box-sizing: border-box;
-	background: rgba(255,255,255,0.8);
-}
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100; }
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: -65px;
+  left: -150px;
+  width: 150%;
+  height: 150%; }
+
+/*# sourceMappingURL=style.css.map */
