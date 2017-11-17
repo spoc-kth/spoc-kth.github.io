@@ -2,7 +2,7 @@
 
 var generateRandomData = function() {
 	var dataArray = [];
-	for (var i=0; i<daysPerMonth; i++) {
+	for (var i=0; i<numOfArms; i++) {
 		dataArray[i] = [];
 
 		for (var c=0; c<categories; c++) {
@@ -20,7 +20,7 @@ var generateRandomData = function() {
 var generateRandomDataOneArray = function() {
 	var dataArray = [];
 	var j = 0;
-	for (var i=0; i<daysPerMonth; i++) {
+	for (var i=0; i<numOfArms; i++) {
 		//dataArray[i] = [];
 
 		for (var c=0; c<categories; c++) {
@@ -38,13 +38,13 @@ var generateRandomDataOneArray = function() {
 
 var generateRandomUserData = function() {
 	var dataArray = [];
-	for (var i=0; i<daysPerMonth; i++) {
+	for (var i=0; i<numOfArms; i++) {
 		dataArray[i] = [];
 
 		shoppedToday = getRandomInt(0,2);
 
 		for (var c=0; c<categories; c++) {
-	
+
 			if (shoppedToday) {
 				shoppedThisCategory = getRandomInt(0,2);
 				if (shoppedThisCategory) {
@@ -67,11 +67,11 @@ var generateRandomUserDataOneArray = function() {
 	var dataArray = [];
 	var j = 0;
 
-	for (var i=0; i<daysPerMonth; i++) {
+	for (var i=0; i<numOfArms; i++) {
 		shoppedToday = getRandomInt(0,2);
 
 		for (var c=0; c<categories; c++) {
-	
+
 			if (shoppedToday) {
 				shoppedThisCategory = getRandomInt(0,2);
 				if (shoppedThisCategory) {
@@ -99,7 +99,7 @@ var updateAggregateCategoryData = function(d) {
 			categoryData[i].value += d[k];///daysToShow;
 			k += 1;
 		}
-		totalCategory = 0; 
+		totalCategory = 0;
 	}
 	for (var l=0; l<categoryData.length; l++) {
 		categoryData[l].value /= daysToShow;
@@ -111,9 +111,9 @@ var updateAggregateCategoryData = function(d) {
 //	bubble array under bubbleData[i].values dictionary
 var updateBubbleData = function(bubbleData, newData, newDataKey) {
 	var j = 0;
-	for (var i=0; i<daysPerMonth; i++) {
+	for (var i=0; i<numOfArms; i++) {
 		for (var c=0; c<categories; c++) {
-			
+
 			bubbleData[j].values[newDataKey] = newData[j];
 
 			j += 1;
@@ -122,11 +122,30 @@ var updateBubbleData = function(bubbleData, newData, newDataKey) {
 	return bubbleData;
 }
 
+var generateWeekdayData = function() {
+	var j = 0;
+	var dataArray = [];
+		for (var i=0; i<numOfArms; i++) {
+
+			var obj = {
+				'posX': origin.x + topLabels[i].x,
+				'posY': origin.y + topLabels[i].y,
+				'radialX': i,
+				'label': weekdayLabels[i],
+				'num': j,
+			};
+			dataArray[j] = obj;
+			j += 1;
+
+		}
+	return dataArray;
+}
+
 var generateBubbleData = function() {
 	var j = 0;
 	var dataArray = [];
-	for (var i=0; i<daysPerMonth; i++) {
-		for (var c=0; c<categories; c++) {
+	for (var c=0; c<categories; c++) {
+		for (var i=0; i<numOfArms; i++) {
 
 			var bubbleObj = {
 				'posX': origin.x + coordSys[i][c].x,
@@ -135,6 +154,7 @@ var generateBubbleData = function() {
 				'radialY': c,
 				'category': c,
 				'values': {},
+				'num': j,
 			};
 			dataArray[j] = bubbleObj;
 			j += 1;
@@ -183,7 +203,8 @@ var topListData = [
 	}
 ];
 
+
+var labelData = generateWeekdayData();
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
 var bubbleData = generateBubbleData();
-

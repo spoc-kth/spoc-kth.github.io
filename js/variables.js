@@ -1,31 +1,50 @@
+// weekday topLabels
+weekdayLabels = [
+  'Mån',
+  'Tis',
+  'Ons',
+  'Tor',
+  'Fre',
+  'Lör',
+  'Sön'
+]
+weekdayLabelsOriginal = weekdayLabels;
+
 // Date variables
-var daysPerMonth = 30;
-var daysToShow = 15;
+var numOfArms = 7;
+var daysToShow = 5;
 
 var currentDate = new Date();
 var currentMonth = currentDate.getMonth() + 1;
 var currentYear = currentDate.getFullYear();
-var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate();
+var daysPerMonthNum = new Date(currentYear, currentMonth, 0).getDate();
+var daysPerMonth = 7; // how many arms the dandelion has
+
+var firstDayOfMonth = new Date(currentYear, currentMonth-1, 1);
+firstWeekdayOfMonth = firstDayOfMonth.getDay()-1;
+weekdayLabels = weekdayLabelsOriginal.slice(firstWeekdayOfMonth, weekdayLabelsOriginal.length);
+weekdayLabels = weekdayLabels.concat(weekdayLabelsOriginal.slice(0,firstWeekdayOfMonth));
 
 daysToShow = currentDate.getDate();
-//daysToShow = 22;
+//daysToShow = 12;
 
 // Circle variables
 var angle = 360 / daysPerMonth;
 var currAngle = 0;
-var innerRadius = 30;
+var innerRadius = 10;
 var currRadius = innerRadius;
-var radius = 6;
+var radius = 41;
 var categories = 8;
-categories = 50;
+categories = 4;
 
 var canvas_width = 615;
 var canvas_height = 615;
 // Bubbles
-var minBubbleRadius = 5;
-var maxBubbleRadius = 5;
+var minBubbleRadius = 20;
+var maxBubbleRadius = 20;
 
 var totalItems = daysPerMonth*categories;
+
 
 
 
@@ -39,6 +58,7 @@ var baseS = 76;
 var baseV = 55;
 var baseColr = d3.rgb('#228B22');
 var baseColor = d3.hsl(baseColr);
+var gray = d3.rgb('#dddddd')
 
 var colrMeat = d3.rgb('#f0a4a6');
 var colrFish = d3.rgb('#b1d0cf');
@@ -128,7 +148,191 @@ function getRandomArbitrary(min, max) {
 
 // MAP STYLE
 //
-
+var mapStyle_clean = [
+    {
+        "featureType": "all",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.government",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#dfdcd5"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.medical",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#dfdcd5"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#bad294"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.place_of_worship",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.school",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.sports_complex",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#efebe2"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#fbfbfb"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#a5d7e0"
+            }
+        ]
+    }
+]
 var mapStyle_oldschool =
 [
   {
