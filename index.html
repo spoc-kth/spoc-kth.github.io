@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="sv">
   <head>
     <title>COOP EkoMästare</title>
@@ -6,23 +6,38 @@
     <!-- Load D3 from site -->
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3-ease.v1.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+
+
+<!--     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+ -->    
+
+    <!-- Adobe Typekit (so we can use similar fonts to COOP) -->
+    <script src="https://use.typekit.net/crn7ksq.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </head>
 
   <body>
 
-
+   <div class="video-white-frame">
+      <div class="video-bg">
+        <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="assets/sky-high.webm" type="video/webm">
+        <source src="assets/sky-high.mp4" type="video/mp4">
+        </video>
+      </div>
+   </div>
 
     <div class="container-fluid">
+
       <div class="row">
         <div class="col-md-12">
           <ul id="slides">
             <!-- Slide 1, main visualization -->
           	<li class="slide showing">
+
               <div class="vis-container">
-                <div class="row">
+                <div class="row title" >
                     <h2>Tillsammans för en grönare framtid</h2>
                     <h3>En visualisering av våra kunders ekologiska inköp</h3>
                 </div>
