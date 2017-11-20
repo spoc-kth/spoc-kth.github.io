@@ -19,13 +19,17 @@ body {
     *//* font-family: 'Covered By Your Grace', cursive; */
     text-transform: uppercase;
     text-align: center;
-    background: url('assets/high.mp4');
+    background: url('img/bg.png');
     background-size: cover;
     background-attachment: fixed;
 }
 
 circle {
 	opacity: 0.8;
+}
+
+.title img {
+	position: absolut;
 }
 
 .title  {
@@ -129,9 +133,8 @@ just for appearance; change whatever you want
 .slide{
 	padding: 30px;
 	box-sizing: border-box;
-	background: rgba(255,255,255,0.7);
+	background: rgba(0,170,70,0.3);
 	box-shadow: 10px 5px 5px black;
-
 }
 
 
