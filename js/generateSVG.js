@@ -115,7 +115,10 @@ bubbles.enter().append('circle')
             return d.posY;
         })
         .attr("r", function(d) {
-            return minBubbleRadius;
+            //return minBubbleRadius * d.values.initial;
+            a = minBubbleRadius;
+            b = maxBubbleRadius;
+            return ((d.values.initial)*maxBubbleRadius) + minBubbleRadius;
         })
         .style("fill", function(d) {
             var tempColor = baseColor;

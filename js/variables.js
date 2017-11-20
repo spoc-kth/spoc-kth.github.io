@@ -40,8 +40,8 @@ categories = 4;
 var canvas_width = 615;
 var canvas_height = 615;
 // Bubbles
-var minBubbleRadius = 20;
-var maxBubbleRadius = 20;
+var minBubbleRadius = 7;
+var maxBubbleRadius = 17;
 
 var totalItems = daysPerMonth*categories;
 
