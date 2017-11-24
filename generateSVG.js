@@ -148,6 +148,14 @@ categoryGroupBubbles.append('text')
     categoryBubbles = categoryBubbles.merge(categoryGroupBubbles);
 
 
+var middleLabel = svg.selectAll("g.middle")  // Add text svg
+    .data(currentYear);
+
+middleLabel.enter().append('text')
+  .text(function(d) {
+    console.log(d);
+      return "hej";
+  });
 
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
 
