@@ -14,6 +14,24 @@ var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
+    var labels = svg.selectAll("text.label")
+      .data(labelData)
+
+    labels.enter().append('text')
+      .attr("class", function(d){
+          return "label";
+      })
+      .attr("x", function(d) {
+          return d.posX;  // Circle's X
+      })
+      .attr("y", function(d) {  // Circle's Y
+          return d.posY;
+      })
+      .attr("text-anchor", "middle")
+      .text(function(d) {
+        return d.label
+      })
+
 var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
     .data(bubbleData)
 
@@ -52,7 +70,7 @@ bubbles.enter().append('circle')
             div.transition()
                 .duration(200)
                 .style("opacity", 0);
-        })
+        })/*
         .transition()
             .delay(function(d) { return getRandomArbitrary(0,1)*1000; })
             .duration(0)
@@ -79,7 +97,7 @@ bubbles.enter().append('circle')
                     .transition()
                         .duration(0)
                         .on("start", repeat);
-                });
+                });*/
 
 var forceStrength = 0.03;
 var force = d3.forceCenter([origin.x, origin.y]);
@@ -148,13 +166,18 @@ categoryGroupBubbles.append('text')
     categoryBubbles = categoryBubbles.merge(categoryGroupBubbles);
 
 
-var middleLabel = svg.selectAll("g.middle")  // Add text svg
-    .data(currentYear);
-
-middleLabel.enter().append('text')
+svg.append('text')
+  .attr("class", "middle")
+  .attr("x", function(d) {
+      return origin.x;  // Circle's X
+  })
+  .attr("y", function(d) {  // Circle's Y
+      return origin.y+1;
+  })
+  .attr("text-anchor", "middle")
+  .style("width", innerRadius*2)
   .text(function(d) {
-    console.log(d);
-      return "hej";
+      return currentYear;
   });
 
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;

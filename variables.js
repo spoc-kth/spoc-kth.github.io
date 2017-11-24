@@ -1,3 +1,16 @@
+
+// weekday topLabels
+weekdayLabels = [
+  'Mån',
+  'Tis',
+  'Ons',
+  'Tor',
+  'Fre',
+  'Lör',
+  'Sön'
+]
+weekdayLabelsOriginal = weekdayLabels;
+
 // Date variables
 var daysPerMonth = 52;
 var daysToShow = 15;
@@ -55,6 +68,38 @@ var colr8 = colrFreezer;
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
 var categoryLabels = ["Kött", "Fisk", "Mejeri", "Frukt & grönt", "Torrvaror", "Snacks", "Bröd", "Frys"];
 categoryLabels = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
+var monthLabels = {
+  '0': 'January',
+  '3': 'February',
+  '7': 'March',
+  '10': 'April',
+  '13': 'May',
+  '17': 'June',
+  '20': 'July',
+  '23': 'August',
+  '27': 'September',
+  '30': 'October',
+  '33': 'November',
+  '37': 'December'
+}
+var monthsArr = new Array();
+    // get current month
+    // store month names into our array
+    monthsArr[0] = "Januari";
+    monthsArr[1] = "Februari";
+    monthsArr[2] = "Mars";
+    monthsArr[3] = "April";
+    monthsArr[4] = "Maj";
+    monthsArr[5] = "Juni";
+    monthsArr[6] = "Juli";
+    monthsArr[7] = "Augusti";
+    monthsArr[8] = "September";
+    monthsArr[9] = "Oktober";
+    monthsArr[10] = "November";
+    monthsArr[11] = "December";
+var numberOfDaysPerMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+var seasonLabels = ["Vår", "Sommar", "Höst", "Vinter"];
 
 // Bubble opacity
 var minOpacity = 0.2;

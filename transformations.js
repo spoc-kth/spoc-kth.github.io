@@ -54,6 +54,7 @@ var resetBubbles = function() {
         .attr("cy", function(d) {  // Circle's Y
             return d.posY;
         })
+				/*
 		.transition()
 					.delay(function(d) { return getRandomArbitrary(0,1)*1000; })
                     .duration(0)
@@ -80,7 +81,7 @@ var resetBubbles = function() {
                             .transition()
                                 .duration(0)
                                 .on("start", repeat);
-                        });
+                        });*/
 
 	d3.selectAll(".category")
 		.transition()
