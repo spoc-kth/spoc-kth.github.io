@@ -19,6 +19,10 @@ function initMap() {
   var coopHotorget = {lat: 59.335285, lng: 18.063257};
   var coopCentralen = {lat: 59.330026, lng: 18.058139};
   var coopOstermalm = {lat: 59.336766, lng: 18.080502};
+  var coopSveavagen = {lat:59.3352579, lng: 18.0465754};
+  var coopRadhuset = {lat:59.3352579, lng:18.0465754};
+  var coopGamla = {lat:59.3283725, lng:18.0645923};
+
   var kth = {lat: 59.347367, lng: 18.074351};
 
   // markers
@@ -34,6 +38,22 @@ function initMap() {
     position: coopCentralen,
     map: map
   });
+
+  var marker4 = new google.maps.Marker({
+    position: coopSveavagen,
+    map: map
+  });
+
+  var marker5 = new google.maps.Marker({
+    position: coopRadhuset,
+    map: map
+  });
+
+  var marker6 = new google.maps.Marker({
+    position: coopGamla,
+    map: map
+  });
+
 }
 
 

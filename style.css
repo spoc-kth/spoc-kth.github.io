@@ -17,7 +17,8 @@ circle {
   opacity: 0.8; }
 
 .title img {
-  position: absolut; }
+  position: absolut;
+  max-width: 20%; }
 
 .title {
   font-family: "runda", sans-serif;
@@ -29,7 +30,8 @@ circle {
 .title h3 {
   font-family: "ff-market-web", cursive, cursive;
   color: #00AA46;
-  margin-left: 105px; }
+  margin-left: 105px; 
+  font-size: 75px;}
 
 .bubble-hidden {
   display: none; }
@@ -39,15 +41,19 @@ circle {
 
 .toplist li {
   padding: 8px 15px;
-  margin: 10px 20px;
+  margin: 2px 20px;
   text-align: left;
   border: 2px solid seagreen; }
+
+.toplist {
+  font-size: 25px;
+}
 
 .toplist .toplistPercentage {
   float: right; }
 
 .toplist li:nth-child(1) {
-  margin-bottom: 30px; }
+  margin-bottom: 2px; }
 
 .toplist li:nth-child(3) {
   background: seagreen;
@@ -72,7 +78,8 @@ div.tooltip {
 #map {
   width: 100%;
   height: 500px;
-  background-color: grey; }
+  background-color: grey;
+  z-index: -1; }
 
 /* SLIDES
 ============================================
@@ -130,3 +137,25 @@ just for appearance; change whatever you want
   height: 150%; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+toplistName1 {
+  background-color: #23D100;
+}
+
+toplistName2 {
+  color: #76B704;
+}
+
+toplistName3 {
+  color: #76B704;
+}
+
+toplistName4 {
+  color:#C8C50B;
+}
+
+toplistaName5{
+  color:#DBC117;
+}

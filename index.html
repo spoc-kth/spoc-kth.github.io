@@ -7,9 +7,8 @@
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3-ease.v1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-
-
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"> </script>
     
 
     <!-- Adobe Typekit (so we can use similar fonts to COOP) -->
@@ -25,7 +24,7 @@
         <div class="col-md-12">
           <ul id="slides">
             <!-- Slide 1, main visualization -->
-          	<li class="slide showing">
+<!--           	<li class="slide showing">
 
               <div class="vis-container">
                 <div class="row title" >
@@ -45,18 +44,48 @@
                   </div>
                 </div>
               </div> <!-- end vis container -->
-            </li>
+            <!-- </li> --> -->
             <!-- Slide 2, map -->
-          	<li class="slide ">
+          	<li class="slide showing" style="display: inline;">
               <div class="row title" >
                     <img src="assets/coop-logo-green.png">
-                    <h2>Eko Mästares</h2>
+                    <!-- <h2>Eko Mästares</h2> -->
                     <h3>vilken butik köper mer organiskt?</h3>
+              </div>
+              <div layout="row">
+                <div  class="col-md-8">
+                  <div id="map" class="col-3-4"></div>
                 </div>
-              <div id="map"></div>
+
+            <div class="col-md-4">
+             <div class="container-toplist">
+                  <ul class="list-unstyled toplist" id="toplist">
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber1">1</span> <span class="toplistName" id="toplistName1">COOP Järna</span>
+                    </li>
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber2">16</span> <span class="toplistName" id="toplistName2">COOP Fridhemsplan</span>
+                    </li>
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber3">17</span> <span class="toplistName" id="toplistName3">COOP Norra Djurgårdsstaden</span>
+                    </li>
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber4">18</span> <span class="toplistName" id="toplistName4">COOP A</span> 
+                    </li>
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber4">18</span> <span class="toplistName" id="toplistName5">COOP B</span> 
+                    </li>
+                    <li>
+                      #<span class="toplistNumber" id="toplistNumber4">18</span> <span class="toplistName" id="toplistName4">COOP E</span> 
+                    </li>                                                                                
+                  </ul>
+                </div>
+            </div>
             </li>
+
+
             <!-- slide 3 -->
-          	<li class="slide">Slide 3</li>
+          	<!-- <li class="slide">Slide 3</li> -->
           </ul>
         </div>
       </div>
