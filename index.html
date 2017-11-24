@@ -6,11 +6,14 @@
     <!-- Load D3 from site -->
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3-ease.v1.min.js"></script>
- 
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-hsv.v0.1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
- 
+
   <body>
     <div class="container-fluid">
       <div class="row">
@@ -22,13 +25,13 @@
                 <h3>En visualisering av våra kunders ekologiska inköp</h3>
                 <div id="svg"></div>
                 <h3><span id="numDaysLeft"></span> dagar kvar av ett grönare september </h3>
-              
-                
+
+
               </div>
               <div class="col-md-5">
                 <h1><img src="img/logo1.png"/></h1>
                 <div class="container-toplist">
-                  
+
                   <ul class="list-unstyled toplist" id="toplist">
                     <li>
                       #<span class="toplistNumber" id="toplistNumber1">1</span> <span class="toplistName" id="toplistName1">COOP Järna</span> <span class="toplistPercentage" id="toplistPercentage1">33%</span>
@@ -45,14 +48,14 @@
                   </ul>
                   </div>
                 <p>
-                  <button class="btn btn-default buttons" type="button" onclick="swipeCard()">Swipe my card</button> 
+                  <button class="btn btn-default buttons" type="button" onclick="swipeCard()">Swipe my card</button>
                   <button class="btn btn-default buttons" type="button" onclick="resetBubbles()">Reset</button>
                 </p>
                 <p>
                   <button class="btn btn-default buttons" type="button" onclick="mergeCategories()">Merge</button>
-                </p>  
+                </p>
               </div>
-              
+
             </div>
           </div> <!-- end container -->
         </div>

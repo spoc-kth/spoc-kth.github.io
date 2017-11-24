@@ -1,13 +1,14 @@
 // Date variables
-var daysPerMonth = 30;
+var daysPerMonth = 52;
 var daysToShow = 15;
 
 var currentDate = new Date();
 var currentMonth = currentDate.getMonth() + 1;
 var currentYear = currentDate.getFullYear();
-var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate();
-
-var daysToShow = currentDate.getDate();
+var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate(); // number of days in current month
+daysPerMonth = 52; // 52 weeks
+var daysToShow = currentDate.getDate(); // current day of month
+daysToShow = 47;
 
 // Circle variables
 var angle = 360 / daysPerMonth;
@@ -15,21 +16,23 @@ var currAngle = 0;
 var innerRadius = 50;
 var currRadius = innerRadius;
 var radius = 30;
-var categories = 8;
+var categories = 7;
 
 var canvas_width = 615;
 var canvas_height = 615;
 // Bubbles
-var minBubbleRadius = 0;
-var maxBubbleRadius = 20;
+var minBubbleRadius = 3;
+var maxBubbleRadius = 14;
 
 var totalItems = daysPerMonth*categories;
 
 
 
-/* 
+/*
 Bubble colors
 */
+var interpolate = d3.interpolateRgb("yellow", "seagreen");
+console.log(interpolate(0.5));
 
 var colrMeat = d3.rgb('#f0a4a6');
 var colrFish = d3.rgb('#b1d0cf');
@@ -51,6 +54,7 @@ var colr8 = colrFreezer;
 
 var colors = [colr1, colr2, colr3, colr4, colr5, colr6, colr7, colr8];
 var categoryLabels = ["Kött", "Fisk", "Mejeri", "Frukt & grönt", "Torrvaror", "Snacks", "Bröd", "Frys"];
+categoryLabels = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"];
 
 // Bubble opacity
 var minOpacity = 0.2;

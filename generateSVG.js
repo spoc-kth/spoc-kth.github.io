@@ -8,10 +8,10 @@ var svg = d3.select("#svg")  // This is where we put our vis
     .attr("height", canvas_height);
 
 
-var data = randomData; 
+var data = randomData;
 
-var div = d3.select("body").append("div")   
-    .attr("class", "tooltip")               
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
     .style("opacity", 0);
 
 var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
@@ -22,7 +22,7 @@ bubbles.enter().append('circle')
             if (d.radialX < daysToShow) {
                 return "bubble bubble-visible bubble-category-" + String(d.category);
             } else {
-                return "bubble bubble-hidden bubble-category-" + String(d.category);
+                return "bubble bubble-opacity bubble-category-" + String(d.category);
             }
         })
         .attr("id", function(d) {
@@ -37,21 +37,21 @@ bubbles.enter().append('circle')
         .attr("r", function(d) {
             return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
         })
-        .style("fill", function(d) { 
-            return colors[d.radialY]; 
+        .style("fill", function(d) {
+            return interpolate(d.values['initial']);
         })
-        .on("mouseover", function(d) {     
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);      
-            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.values.initial*100)) + "% ekologiskt")  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(200)      
-                .style("opacity", 0);   
+        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.values.initial*100)) + "% ekologiskt")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
         })
         .transition()
             .delay(function(d) { return getRandomArbitrary(0,1)*1000; })
@@ -103,18 +103,18 @@ var categoryGroupBubbles = categoryBubbles.enter().append('g')
             return d.y;
         })
         .style("opacity", 0)
-        .on("mouseover", function(d) {     
-            div.transition()        
-                .duration(200)      
-                .style("opacity", .9);      
-            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.value*100)) + "% ekologiskt")  
-                .style("left", (d3.event.pageX) + "px")     
-                .style("top", (d3.event.pageY - 28) + "px");    
-            })                  
-        .on("mouseout", function(d) {       
-            div.transition()        
-                .duration(200)      
-                .style("opacity", 0);   
+        .on("mouseover", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(categoryLabels[d.category] + ": " + String(Math.round(d.value*100)) + "% ekologiskt")
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
         })
 
 
@@ -128,8 +128,8 @@ categoryGroupBubbles.append('circle')
         .attr("r", function(d) {
             return 0;//((d.value)*maxBubbleRadius) + minBubbleRadius;
         })
-        .style("fill", function(d) { 
-            return colors[d.category]; 
+        .style("fill", function(d) {
+            return colors[d.category];
         })
 
 categoryGroupBubbles.append('text')
@@ -140,15 +140,15 @@ categoryGroupBubbles.append('text')
             return d.y;
         })
     .attr("dy", ".35em")
-    .text(function(d) { 
-        return String(Math.round(d.value*100)) + "%"; 
+    .text(function(d) {
+        return String(Math.round(d.value*100)) + "%";
     });
 
     // @v4 Merge the original empty selection and the enter selection
     categoryBubbles = categoryBubbles.merge(categoryGroupBubbles);
 
 
-   
+
 var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
 
 for (var k=0;k<topListData.length;k++) {
@@ -163,4 +163,3 @@ for (var k=0;k<topListData.length;k++) {
     p = Math.round(p);
     percentage.innerHTML =  String(p) + "%";
 }
-
