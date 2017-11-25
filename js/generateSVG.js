@@ -15,13 +15,13 @@ function initMap() {
   // positions
   var uluru = {lat: -25.363, lng: 131.044};
 
-  var coopNorraD = {lat: 59.358553, lng: 18.091486};
-  var coopHotorget = {lat: 59.335285, lng: 18.063257};
-  var coopCentralen = {lat: 59.330026, lng: 18.058139};
-  var coopOstermalm = {lat: 59.336766, lng: 18.080502};
-  var coopSveavagen = {lat:59.3352579, lng: 18.0465754};
-  var coopRadhuset = {lat:59.3352579, lng:18.0465754};
-  var coopGamla = {lat:59.3283725, lng:18.0645923};
+  // var coopNorraD = {lat: 59.358553, lng: 18.091486};
+  // var coopHotorget = {lat: 59.335285, lng: 18.063257};
+  // var coopCentralen = {lat: 59.330026, lng: 18.058139};
+  // var coopOstermalm = {lat: 59.336766, lng: 18.080502};
+  // var coopSveavagen = {lat:59.3352579, lng: 18.0465754};
+  // var coopRadhuset = {lat:59.3352579, lng:18.0465754};
+  // var coopGamla = {lat:59.3283725, lng:18.0645923};
 
   var kth = {lat: 59.347367, lng: 18.074351};
 
