@@ -61,6 +61,31 @@ function initMap() {
 
 
 // **************************************************
+// Legend
+
+var legendSvg = d3.select("#legend")
+  .append("svg")
+  .attr("width", 90)
+  .attr("height", 50);
+
+var legendBubbles = legendSvg.selectAll("circle.legend")
+  .data(legendData)
+
+legendBubbles.enter().append("circle")
+  .attr("class", "legend")
+  .attr("r", function(d) {
+    console.log(d);
+      return d.radius;
+  })
+  .attr("cx", function(d) {
+      return d.posX;  // Circle's X
+  })
+  .attr("cy", function(d) {  // Circle's Y
+      return d.posY;
+  })
+  .style("fill", function(d) {
+      return d.fill;
+  })
 
 // **************************************************
 
@@ -101,7 +126,11 @@ var bubbles = svg.selectAll("circle.bubble")  // Add circle svg
 
 bubbles.enter().append('circle')
         .attr("class", function(d){
-            if (d.radialX < daysToShow) {
+            if (d.radialX == daysToShow && d.radialY == dayOfWeek-1) {
+                return "bubble bubble-visible bubble-today bubble-category-" + String(d.category);
+            } else if (d.radialX == daysToShow && d.radialY < dayOfWeek) {
+                return "bubble bubble-visible bubble-category-" + String(d.category);
+            } else if (d.radialX < daysToShow) {
                 return "bubble bubble-visible bubble-category-" + String(d.category);
             } else {
                 return "bubble bubble-opacity bubble-category-" + String(d.category);
@@ -134,7 +163,7 @@ bubbles.enter().append('circle')
             div.transition()
                 .duration(200)
                 .style("opacity", 0);
-        })/*
+        })
         .transition()
             .delay(function(d) { return getRandomArbitrary(0,1)*1000; })
             .duration(0)
@@ -161,7 +190,7 @@ bubbles.enter().append('circle')
                     .transition()
                         .duration(0)
                         .on("start", repeat);
-                });*/
+                });
 
 var forceStrength = 0.03;
 var force = d3.forceCenter([origin.x, origin.y]);
@@ -244,4 +273,4 @@ svg.append('text')
       return currentYear;
   });
 
-var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;
+//var numDays = document.getElementById("numDaysLeft").innerHTML = daysPerMonth-daysToShow;

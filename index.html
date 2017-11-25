@@ -24,24 +24,36 @@
             <!-- Slide 1, main visualization -->
           	<li class="slide showing">
 
-              <div class="vis-container">
+              <div class="col-md-12 vis-container">
                 <div class="row title" >
-                    <h2>Tillsammans för en grönare framtid</h2>
-                    <h3>En visualisering av våra kunders ekologiska inköp</h3>
+
                 </div>
                 <div class="row">
 
-                  <div class="col-md-12">
+                  <div class="col-md-7">
                     <div id="svg"></div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="title">
+                      <h2>Tillsammans för en grönare framtid</h2>
+                      <h3>En visualisering av våra kunders ekologiska inköp</h3>
+                    </div>
+                    <div class="legend-container">
+                      <span>Mindre</span>
+                      <span id="legend">
+                      </span>
+                      <span>Mer</span>
+                    </div>
                   </div>
 
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3><span id="numDaysLeft"></span> dagar kvar av ett grönare <span id="currentMonthName"></span> </h3>
+                    <!--<h3><span id="numDaysLeft"></span> dagar kvar av ett grönare <span id="currentMonthName"></span> </h3>-->
                   </div>
                 </div>
               </div> <!-- end vis container -->
+
             </li>
             <!-- Slide 2, map -->
           	<li class="slide">

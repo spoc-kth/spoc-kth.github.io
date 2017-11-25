@@ -19,6 +19,7 @@ var currentDate = new Date();
 var currentMonth = currentDate.getMonth() + 1;
 var currentYear = currentDate.getFullYear();
 var daysPerMonth = new Date(currentYear, currentMonth, 0).getDate(); // number of days in current month
+var dayOfWeek = currentDate.getDay();
 daysPerMonth = 52; // 52 weeks
 var daysToShow = currentDate.getDate(); // current day of month
 daysToShow = 47;
@@ -46,6 +47,7 @@ Bubble colors
 */
 var interpolate = d3.interpolateRgb("yellow", "seagreen");
 console.log(interpolate(0.5));
+var interpolatedColors = [interpolate(0),interpolate(0.25),interpolate(0.5),interpolate(0.75),interpolate(1)];
 
 var colrMeat = d3.rgb('#f0a4a6');
 var colrFish = d3.rgb('#b1d0cf');

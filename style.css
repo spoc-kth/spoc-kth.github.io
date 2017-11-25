@@ -9,6 +9,7 @@ body {
     text-align: center;
     background: url('img/bg.png');
     background-size: cover;
+    background-attachment: fixed;
 }
 
 circle {
@@ -16,7 +17,6 @@ circle {
 }
 
 .vis-container {
-	background-color: rgba(255,255,255,0.8);
 	margin: 30px;
 }
 .bubble-hidden {
@@ -25,11 +25,21 @@ circle {
 .bubble-opacity {
   opacity: 0.2 !important;
 }
+.bubble-today {
+  stroke: black;
+}
 .category {
   font-size: 2.3em;
 }
 text.middle {
   font-size: 2.3em;
+}
+text.label {
+  font-size: 1em;
+}
+.legend-container span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .toplist li {

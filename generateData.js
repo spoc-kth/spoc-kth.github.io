@@ -1,4 +1,28 @@
 
+var generateLegendData = function() {
+	var i = 6;
+	var dataArray = [];
+	var bubbleNum = interpolatedColors.length;
+	var bubbleRadiusStep = maxBubbleRadius/bubbleNum;
+	var currentBubbleRadius = minBubbleRadius;
+	var currentX = minBubbleRadius + 5;
+		for (var j=0; j<bubbleNum; j++) {
+
+			var obj = {
+				'posX': currentX,
+				'posY': 25,
+				'fill': interpolatedColors[j],
+				'num': j,
+				'radius': currentBubbleRadius,
+			};
+			dataArray[j] = obj;
+			currentBubbleRadius += bubbleRadiusStep;
+			currentX += currentBubbleRadius*1.7;
+
+		}
+	return dataArray;
+}
+
 var generateWeekdayData = function() {
 	var j = 0;
 	var dataArray = [];
@@ -248,6 +272,7 @@ var topListData = [
 	}
 ];
 
+var legendData = generateLegendData();
 var monthData = generateMonthData();
 var labelData = generateSeasonData();
 var randomData = generateRandomData();
