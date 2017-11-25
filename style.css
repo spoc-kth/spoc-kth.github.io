@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Covered+By+Your+Grace');
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
+@font-face {
+    font-family: 'Phosphatesolid'; /*a name to be used later*/
+    src: url('phosphatesolid.ttf'); /*URL to font*/
+}
 
 body {
     font-family: 'Droid Sans', sans-serif;
@@ -42,16 +46,16 @@ text.label {
   top: 25vh;
 }
 .title {
-  font-family: "runda", sans-serif;
+  font-family: "Phosphatesolid", sans-serif;
   font-weight: 300;
   font-size: 38px;
-  color: black;
+  color: #055235;
   line-height: 0.3em; }
 
 .title h3 {
   font-family: "ff-market-web", cursive, cursive;
   color: #00AA46;
-  margin-left: 105px; }
+ }
 .legend-container span {
   display: inline-block;
   vertical-align: middle;
