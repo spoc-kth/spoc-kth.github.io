@@ -33,7 +33,7 @@ for (var d=0; d<daysPerMonth; d++) {
 
     // top labels
     currRadius += radius;
-    r = currRadius;
+    r = currRadius+8;
     x = r*Math.cos(a);
     y = r*Math.sin(a);
 
