@@ -37,6 +37,21 @@ text.middle {
 text.label {
   font-size: 1em;
 }
+.sidebar {
+  position: relative;
+  top: 25vh;
+}
+.title {
+  font-family: "runda", sans-serif;
+  font-weight: 300;
+  font-size: 38px;
+  color: black;
+  line-height: 0.3em; }
+
+.title h3 {
+  font-family: "ff-market-web", cursive, cursive;
+  color: #00AA46;
+  margin-left: 105px; }
 .legend-container span {
   display: inline-block;
   vertical-align: middle;
