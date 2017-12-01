@@ -56,10 +56,15 @@ text.label {
   font-family: "ff-market-web", cursive, cursive;
   color: #00AA46;
  }
+ /*/////////////////////// LEGEND ///////////////////////////////////////*/
 .legend-container span {
   display: inline-block;
   vertical-align: middle;
 }
+.legend-circle {
+  font-size: 0.7em;
+}
+/*-------*/
 
 .toplist li {
 	padding: 8px 15px;

@@ -1,3 +1,120 @@
+//////////////////////// LEGEND ////////////////////////////////////////
+	//Create the SVG
+	var leg = d3.select("#legend-circle").append("svg")
+			.attr("width", 80)
+			.attr("height", 120);
+
+  // create legend text for each layer of cicles
+  for (var i=0; i<7; i++) {
+
+  }
+
+	//Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text1") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,101 A 40,40 0 0,1 60, 101") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text1") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[0]);
+
+	//Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text2") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 4,94 A 28,28 0 0,1 57, 94") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text2") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[1]);
+
+	//Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text3") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,77 A 40,40 0 0,1 60, 77") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text3") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[2]);
+
+
+	//Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text4") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,67 A 40,40 0 0,1 60, 67") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text4") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[3]);
+
+  //Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text5") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,57 A 40,40 0 0,1 60, 57") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text5") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[4]);
+
+  //Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text6") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,47 A 40,40 0 0,1 60, 47") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text6") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[5]);
+
+  //Create an SVG path
+	leg.append("path")
+		.attr("id", "legend-text7") //very important to give the path element a unique ID to reference later
+		.attr("d", "M 0,37 A 40,40 0 0,1 60, 37") //Notation for an SVG path, from bl.ocks.org/mbostock/2565344
+		.style("fill", "none")
+		.style("stroke", "none");
+
+	//Create an SVG text element and append a textPath element
+	leg.append("text")
+	   .append("textPath") //append a textPath to the text element
+		.attr("xlink:href", "#legend-text7") //place the ID of the path here
+		.style("text-anchor","middle") //place the text halfway on the arc
+		.attr("startOffset", "50%")
+		.text(categoryLabels[6]);
+
 
 // *************************************************
 // MAP
