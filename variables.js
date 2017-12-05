@@ -27,7 +27,7 @@ daysToShow = 47;
 // Circle variables
 var angle = 360 / daysPerMonth;
 var currAngle = 0;
-var innerRadius = 50;
+var innerRadius = 70;
 var currRadius = innerRadius;
 var radius = 30;
 var categories = 7;
@@ -37,7 +37,8 @@ var canvas_height = 615;
 // Bubbles
 var minBubbleRadius = 3;
 var maxBubbleRadius = 14;
-
+// interpolated radius
+var interpolatedRadius = d3.interpolateNumber(maxBubbleRadius, maxBubbleRadius+2);
 var totalItems = daysPerMonth*categories;
 
 

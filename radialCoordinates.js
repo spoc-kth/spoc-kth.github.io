@@ -1,6 +1,6 @@
 
 var radiusStep = function(x) {
-  return radius - 2*x;
+  return radius - 1.5*x;
 }
 
 coordSys = [];

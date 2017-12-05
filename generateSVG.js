@@ -146,7 +146,9 @@ bubbles.enter().append('circle')
             return d.posY;
         })
         .attr("r", function(d) {
-            return ((d.values['initial'])*maxBubbleRadius) + minBubbleRadius;
+            console.log((d.radialY+1)/categories);
+            currMaxRadius = interpolatedRadius((d.radialY+1)/categories);
+            return ((d.values['initial'])*currMaxRadius) + minBubbleRadius;
         })
         .style("fill", function(d) {
             return interpolate(d.values['initial']);
