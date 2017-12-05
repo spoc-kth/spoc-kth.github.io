@@ -1,4 +1,8 @@
 
+var radiusStep = function(x) {
+  return radius - 2*x;
+}
+
 coordSys = [];
 topLabels = [];
 
@@ -11,7 +15,7 @@ for (var d=0; d<daysPerMonth; d++) {
 
 
     for (var c=0; c<categories; c++) {
-        currRadius += radius;
+        currRadius += radiusStep(c);
         r = currRadius;
         a = currAngle * (Math.PI/180);
 
