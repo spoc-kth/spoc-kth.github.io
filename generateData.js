@@ -88,6 +88,26 @@ var generateSeasonData = function() {
 	return dataArray;
 }
 
+var generateWeekData = function() {
+	var i = 0;
+	var dataArray = [];
+		for (var j=0; j<daysPerMonth/4; j++) {
+			console.log(i)
+			var obj = {
+				'posX': origin.x + topLabels[i].x,
+				'posY': origin.y + topLabels[i].y,
+				'radialX': i,
+				'label': 'v. ' + String(i+1),
+				'num': j,
+			};
+			dataArray[j] = obj;
+
+
+			i += 4;
+		}
+	return dataArray;
+}
+
 var generateRandomData = function() {
 	var dataArray = [];
 	for (var i=0; i<daysPerMonth; i++) {
@@ -274,7 +294,7 @@ var topListData = [
 
 var legendData = generateLegendData();
 var monthData = generateMonthData();
-var labelData = generateSeasonData();
+var labelData = generateWeekData();
 var randomData = generateRandomData();
 var randomUserData = generateRandomUserData();
 var bubbleData = generateBubbleData();

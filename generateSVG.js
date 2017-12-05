@@ -74,7 +74,6 @@ var legendBubbles = legendSvg.selectAll("circle.legend")
 legendBubbles.enter().append("circle")
   .attr("class", "legend")
   .attr("r", function(d) {
-    console.log(d);
       return d.radius;
   })
   .attr("cx", function(d) {
